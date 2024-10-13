@@ -113,24 +113,24 @@ class LinkedList : public IList {
 };
 
 
-int main() {
-    LinkedList *list = new LinkedList();
-    int value;
-    while(cin >> value) {
-        list->add(value);
-    }
+// int main() {
+//     LinkedList *list = new LinkedList();
+//     int value;
+//     while(cin >> value) {
+//         list->add(value);
+//     }
 
-    list->print();
-    list->remove(1);
-    cout<<"\n";
-    list->print();
-    // list->clear();
-    bool ans = list->contains(4);
-    if(ans) {
-        cout<<"\n4 is present !";
-        cout<<list->getTraverseCount()<<"\n";
-    }else {
-        cout<<"4 is not present !";
-    }
-    // list->print();
-}
+//     list->print();
+//     list->remove(1);
+//     cout<<"\n";
+//     list->print();
+//     // list->clear();
+//     bool ans = list->contains(4);
+//     if(ans) {
+//         cout<<"\n4 is present !";
+//         cout<<list->getTraverseCount()<<"\n";
+//     }else {
+//         cout<<"4 is not present !";
+//     }
+//     // list->print();
+// }
