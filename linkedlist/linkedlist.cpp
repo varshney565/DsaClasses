@@ -105,18 +105,65 @@ Node* addAtBeginning(int data,Node* head) {
     return newNode;
 }
 
+bool isCycle(Node* head) {
+    if(head == nullptr) {
+        return false;
+    }
+    Node* fast = head,*slow = head;
+    do {
+        fast = fast->next;
+        if(fast == nullptr) {
+            return false;
+        }
+        fast = fast->next;
+        slow = slow->next;
+    }while(fast != nullptr && fast->next != nullptr && fast != slow);
+    //logic for checking cycle or not
+    if(fast == slow) {
+        return true;
+    }
+    return false;
+}
+
+Node* reverse(Node* head) {
+    Node* curr = head,*prev = nullptr,*next = nullptr;
+    while(curr != nullptr) {
+        next = curr->next;
+        curr->next = prev;
+        //update
+        prev = curr;
+        curr = next;
+    }
+    //linked list is reversed
+    return prev;
+}
+
 int main() {
     Node *head = new Node(1);
-    Node *second = new Node(3);
-    Node* third = new Node(5);
-    Node* fourth = new Node(6);
-    Node* fifth = new Node(7);
+    Node *second = new Node(2);
+    Node* third = new Node(3);
+    Node* fourth = new Node(4);
+    Node* fifth = new Node(5);
+    Node* sixth = new Node(6);
 
     head->next = second;
     second->next = third;
     third->next = fourth;
     fourth->next = fifth;
+    fifth->next = sixth;
+    sixth->next = nullptr;
+    cout<<"Before reverse\n";
+    print(head);
+    cout<<"After Reverse\n";
+    head = reverse(head);
+    print(head);
 
+    // bool res = isCycle(head);
+    // if(res) {
+    //     cout<<"Cycle is there\n";
+    // }else {
+    //     cout<<"No cycle !\n";
+    // }
     // print(head);
     // int l = length(head);
     // cout<<"\nLength of the linked list : "<<l<<"\n";
@@ -129,11 +176,11 @@ int main() {
     // cout<<"\n";
     // head = addAtKthPos(100,head,4);
     // head = removeFromHead(head);
-    print(head);
+    // print(head);
 
-    cout<<"\n";
-    Node* midNode = findMid(head);
-    cout<<"MidNode Data : "<<midNode->data<<"\n";
+    // cout<<"\n";
+    // Node* midNode = findMid(head);
+    // cout<<"MidNode Data : "<<midNode->data<<"\n";
     // int l2 = length(head);
     // cout<<"\nLength of the linked list : "<<l2<<"\n";
 }

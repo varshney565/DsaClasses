@@ -1,6 +1,6 @@
 #include"Ilist.cpp"
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 class Node {
     public : 
     int data;
@@ -9,6 +9,10 @@ class Node {
     Node(int data ) {
         this->data = data;
         this->next = nullptr;
+    }
+
+    ~Node() {
+        delete this->next;
     }
 };
 
@@ -37,7 +41,7 @@ class LinkedList : public IList {
             return true;
         }
         Node* curr = head;
-        while(curr->next != nullptr) {
+        while(curr != nullptr && curr->next != nullptr) {
             curr = curr->next;
         }
         curr->next = new Node(newEntry);
@@ -84,7 +88,7 @@ class LinkedList : public IList {
     bool contains(int anEntry) {
         int cnt = 0;
         Node* curr = head;
-        while(curr->data != anEntry) {
+        while(curr != nullptr && curr->data != anEntry) {
             curr = curr->next;
             cnt++;
         }
@@ -109,6 +113,7 @@ class LinkedList : public IList {
             cout<<curr->data<<" --> ";
             curr = curr->next;
         }
+        cout<<"\n";
     }    
 };
 
