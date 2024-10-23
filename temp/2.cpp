@@ -8,11 +8,12 @@ class Person {
 
     //Default Constructor
     Person() {
-
+        cout<<"Default Constructor\n";
     }
 
     //Parameterzied Construtor
     Person(string name,int age) {
+        cout<<"Parameterized Constructor\n";
         this->name = name;
         this->age = age;
     }
@@ -20,12 +21,14 @@ class Person {
 
     //Copy Constructor
     Person(const Person &p) {
+        cout<<"Copy Constructor\n";
         this->name = p.name;
         this->age = p.age;
     }
 
     //Copy Assignment Operator
     Person& operator=(const Person& p) {
+        cout<<"Copy Assignment Operator\n";
         this->name = p.name;
         this->age = p.age;
         return *this;
@@ -38,9 +41,9 @@ class Person {
 
 
 int main() {
-    Person p1;
     Person p2("shivam",99);
-    p1.print();
-    p1 = p2;
+    Person p1 = p2;
+    // p1.print();
+    // p1 = p2;
     p1.print();
 }

@@ -36,8 +36,7 @@ int main() {
     Integer a(12),b(13),d(20);
     a.print();
     b.print();
-    Integer c;
-    c = a+b+d;
+    Integer c = a+b+d;
     c.print();
 }
 
