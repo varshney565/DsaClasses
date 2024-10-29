@@ -6,7 +6,7 @@ int main() {
     
     DoublyLinkedList list1;
     list1.insert(10);
-    list1.insert(30);
+    list1.insert(10);
     list1.insert(20);
     list1.insert(5);
     list1.insert(25);

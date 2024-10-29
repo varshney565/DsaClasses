@@ -8,6 +8,7 @@ private:
         if (node == head) {
             head = head->next;
             if (head) head->prev = nullptr;
+            if(head == nullptr) tail = nullptr;
         } else if (node == tail) {
             tail = tail->prev;
             if (tail) tail->next = nullptr;
@@ -26,9 +27,9 @@ public:
     DoublyLinkedList() : head(nullptr), tail(nullptr), length(0) {}
 
     // Copy Constructor
-    DoublyLinkedList(const DoublyLinkedList& other) : head(nullptr), tail(nullptr), length(0) {
-        Node* current = other.head;
-        while (current) {
+    DoublyLinkedList(const DoublyLinkedList& list1) : head(nullptr), tail(nullptr), length(0) {
+        Node* current = list1.head;
+        while (current != nullptr) {
             insert(current->data);
             current = current->next;
         }
@@ -76,11 +77,11 @@ public:
         Node* newNode = new Node(value);
         if (!head) {
             head = tail = newNode;
-        } else if (value <= head->data) {
+        } else if (value < head->data) {
             newNode->next = head;
             head->prev = newNode;
             head = newNode;
-        } else if (value >= tail->data) {
+        } else if (value > tail->data) {
             newNode->prev = tail;
             tail->next = newNode;
             tail = newNode;
@@ -88,6 +89,10 @@ public:
             Node* current = head;
             while (current && current->data < value) {
                 current = current->next;
+            }
+            if(current->data == value) {
+                delete newNode;
+                return false;
             }
             newNode->next = current;
             newNode->prev = current->prev;
@@ -179,7 +184,7 @@ public:
             }
         }
 
-        while (thisCurrent) {
+        while (thisCurrent != nullptr) {
             result.insert(thisCurrent->data);
             thisCurrent = thisCurrent->next;
         }
