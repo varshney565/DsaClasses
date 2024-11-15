@@ -4,16 +4,21 @@ private:
     class Square {
         private:
             int val; // Value in the square; -1 means uninitialized
+            bool fixed;
 
         public:
             // Default constructor, initializes val to -1
             Square() {
                 this->val = -1;
+                fixed = false;
             }
 
             // Constructor to set a specific value
             Square(int value) {
                 this->val = value;
+                if(value != -1) {
+                    fixed = true;
+                }
             }
 
             // Getter for val
@@ -24,6 +29,14 @@ private:
             // Setter for val
             void setValue(int value) {
                 this->val = value;
+            }
+
+            bool isFixed() {
+                return this->fixed;
+            }
+
+            void changeFixedState(bool state) {
+                this->fixed = state;
             }
     };
 
@@ -72,17 +85,19 @@ private:
         int nextCol = (y + 1) % 9; // Wrap around to the start of the next row if needed
 
         // If the cell is already filled, move to the next one
-        if(grid[x][y].getValue() != 0) {
+        if(grid[x][y].isFixed()) {
             return helper(nextRow, nextCol);
         }
 
         // Try values 1 through 9 in the empty cell
         for(int i = 1; i <= 9; i++) {
             grid[x][y].setValue(i); // Place a value
+            grid[x][y].changeFixedState(true);
             if(check(x, y) && helper(nextRow, nextCol)) {
                 return true; // Valid placement and the rest of the puzzle is solvable
             }
-            grid[x][y].setValue(0); // Reset if not valid
+            grid[x][y].setValue(-1); // Reset if not valid
+            grid[x][y].changeFixedState(false);
         }
         return false; // No valid value found for this cell
     }
