@@ -111,12 +111,12 @@ public:
     }
 
     // Get the value of a specific cell
-    int getValue(int x, int y) {
+    int get(int x, int y) {
         return grid[x][y].getValue();
     }
 
     // Set a specific value for a cell
-    void setValue(int x, int y, int val) {
+    void set(int x, int y, int val) {
         grid[x][y].setValue(val);
     }
 
