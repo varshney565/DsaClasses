@@ -143,14 +143,14 @@ public:
             for(int j = 0; j < 9; j++) {
                 out << p.getValue(i, j) << " "; // Print each cell
                 if(j % 3 == 2 && j != 8) { // Vertical separators between 3x3 blocks
-                    cout << "|";
+                    out << "|";
                 }
             }
             out << "\n";
             if(i % 3 == 2 && i != 8) { // Horizontal separators between 3x3 blocks
-                cout << "------+-----+------";
+                out << "------+-----+------";
             }
-            cout << "\n";
+            out << "\n";
         }
         return out;
     }
