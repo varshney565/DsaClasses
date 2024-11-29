@@ -1,13 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Tree {
-    class Node {
-
-    };
-
-
-};
+#include"Tree.h"
 
 string convert(string s) {
     string ans = "";
@@ -26,13 +20,16 @@ string convert(string s) {
 }
 
 int main() {
-    string s = "abcd35mnpo-qrsdOn't bnjK";
     //words = abcd mnop qrsdon't bnjk
     vector<string> ans;
     string temp = "";
-    for(int i = 0 ; i < s.size() ; i++) {
-        if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z') || s[i] == '\'') {
-            temp += s[i];
+    char c;
+    while(cin.get(c)) {
+        if(c == '\n') {
+            break;
+        }
+        if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '\'') {
+            temp += c;
         }else {
             if(temp.size() > 0) ans.push_back(temp);
             temp = "";
@@ -42,10 +39,14 @@ int main() {
         ans.push_back(temp);
     }
 
-    // Tree *t; 
+    WordTree *t = new WordTree();
 
     for(int i = 0 ; i < ans.size() ; i++) {
-        cout<<convert(ans[i])<<" ";
-        // t->insert(ans[i]);
+        string v = convert(ans[i]);
+        t->add(v);
     }
+
+    cout<<t<<"\n";
+
+    cout<<t->numWords()<<"\n";
 }
