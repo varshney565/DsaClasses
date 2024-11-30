@@ -10,6 +10,7 @@ class Node {
     }
 
     ~Node() {
-        delete this;
+        delete this->left;
+        delete this->right;
     }
 };

@@ -6,9 +6,9 @@ class Tree {
 
     virtual void insertNode(int data) = 0;
 
-    virtual bool searchNode(Node* root, int data) = 0;
+    virtual bool searchNode(int data) = 0;
 
-    virtual Node* deleteNode(Node* root,int data) = 0;
+    virtual void deleteNode(int data) = 0;
 
     virtual int height() = 0;
 };
