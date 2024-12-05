@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#include"Tree.h"
+#include"Tree.cpp"
 
 string convert(string s) {
     string ans = "";
